@@ -1,0 +1,16 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-auto-rows: auto;  
+    grid-gap: 1rem;
+    margin-left: 10%;
+    font-family: 'nyt-imperial';
+  }
+.card {
+  background-color: rgb(246, 246, 246);
+  align-items: center;
+  text-align: center;
+}
+.title {
+  text-align: center;
+}
