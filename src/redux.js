@@ -17,9 +17,10 @@ export const reducer = (state = initiatState, action) => {
             }
         }
         case 'DELETE_FROM_BASKET': {
+            const newBasketState = state.basketProducts.filter( val => val.id !== action.payload);
             return {
                 ...state,
-                basketProducts: [...state.basketProducts - (action.payload || [])]
+                basketProducts: newBasketState
             }
         }
         default: return state

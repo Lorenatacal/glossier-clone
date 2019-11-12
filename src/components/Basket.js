@@ -12,8 +12,9 @@ function Basket() {
       <h1>Basket:</h1>
       <div className="cards">
         {
-          basketState.map(({ name, price, image_link, brand}) => {
+          basketState.map(({ id, name, price, image_link, brand}) => {
             const obj = {
+              id,
               name,
               price,
               image_link,
@@ -25,10 +26,10 @@ function Basket() {
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>
+                  <button>Edit</button>
                   <button onClick={() => {
-                    dispatch({type: 'DELETE_FROM_BASKET', payload: obj})
-                  }}>Edit</button>
-                  <button>Remove</button>
+                    dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
+                  }}>Remove</button>
               </div>
             )
           })

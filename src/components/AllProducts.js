@@ -13,6 +13,7 @@ function AllProducts() {
       axios
       .get('http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline')
       .then(response => {
+        console.log(response, 'resp')
         setData(response.data)
         dispatch(createUpdateData(response.data))
       });
@@ -22,8 +23,9 @@ function AllProducts() {
       <div className="App">
         <h1 className="title">Shop All Products</h1>
         <div className='cards'>
-          {data && data.map(({ name, brand, price, image_link, description }) => {
+          {data && data.map(({ id, name, brand, price, image_link, description }) => {
             const obj = {
+                  id,
                   name,
                   price,
                   image_link,
