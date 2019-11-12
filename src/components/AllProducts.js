@@ -33,7 +33,7 @@ function AllProducts() {
                 }
             return (      
                 <div className='card'>
-                  <p>{name}</p>
+                  <p className="productName">{name}</p>
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>

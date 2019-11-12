@@ -9,7 +9,7 @@ function Basket() {
 
   return (
     <div className="App">
-      <h1>Basket:</h1>
+      <h1 className ="title">Basket:</h1>
       <div className="cards">
         {
           basketState.map(({ id, name, price, image_link, brand}) => {
@@ -22,10 +22,11 @@ function Basket() {
             }
             return (
                 <div className='card'>
-                  <p>1 X {name}</p>
+                  <p className="productName">{name}</p>
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
-                  <p>{price} £</p>
+                  <p>Quantity 1 </p>
+                  <p>Price: {price} £</p>
                   <button>Edit</button>
                   <button onClick={() => {
                     dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})

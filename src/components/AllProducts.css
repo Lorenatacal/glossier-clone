@@ -13,4 +13,11 @@
 }
 .title {
   text-align: center;
+  font-family: "Apercu Pro", Helvetica, "Helvetica Neue", Arial, sans-serif
+}
+.productName {
+  font-family: "Apercu Pro", Helvetica, "Helvetica Neue", Arial, sans-serif;
+  color: rgb(0, 0, 0);
+  font-style: italic;
+  font-weight: bold;
 }
