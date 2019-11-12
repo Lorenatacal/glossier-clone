@@ -22,7 +22,7 @@ function Basket() {
             }
             return (
                 <div className='card'>
-                  <p>{name}</p>
+                  <p>1 X {name}</p>
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>
