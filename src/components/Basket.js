@@ -5,20 +5,29 @@ import { createUpdateData } from '../redux';
 
 function Basket() {
   const basketState = useSelector(state => state.basketProducts)
-  console.log(basketState);
+  const dispatch = useDispatch()
+
   return (
     <div className="App">
       <h1>Basket:</h1>
       <div className="cards">
         {
           basketState.map(({ name, price, image_link, brand}) => {
+            const obj = {
+              name,
+              price,
+              image_link,
+              brand
+            }
             return (
                 <div className='card'>
                   <p>{name}</p>
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>
-                  <button>Edit</button>
+                  <button onClick={() => {
+                    dispatch({type: 'DELETE_FROM_BASKET', payload: obj})
+                  }}>Edit</button>
                   <button>Remove</button>
               </div>
             )

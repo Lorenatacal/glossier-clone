@@ -29,7 +29,6 @@ function AllProducts() {
                   image_link,
                   brand
                 }
-            console.log(data, 'data')
             return (      
                 <div className='card'>
                   <p>{name}</p>
