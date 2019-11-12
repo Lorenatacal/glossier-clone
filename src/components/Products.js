@@ -1,5 +1,6 @@
 import React from 'react';
 import AllProducts from './AllProducts';
+import { useSelector } from 'react-redux'
 
 function Products() {
   return (
