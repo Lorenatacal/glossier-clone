@@ -10,19 +10,38 @@ export const reducer = (state = initiatState, action) => {
                 ...state,
                 data: action.payload
             }
-        case 'ADD_TO_BASKET': {
-            return {
-                ...state,
-                basketProducts: [...state.basketProducts, action.payload || []]
-            }
-        }
-        case 'DELETE_FROM_BASKET': {
+            case 'ADD_TO_BASKET':
+                return {
+                    ...state,
+                    basketProducts: [...state.basketProducts, action.payload || []]
+                }
+        case 'DELETE_FROM_BASKET':
             const newBasketState = state.basketProducts.filter( val => val.id !== action.payload);
             return {
                 ...state,
                 basketProducts: newBasketState
             }
-        }
+        case 'ADD_QUANTITY':
+            const product = state.basketProducts.filter( val => val.id === action.payload.id);
+            const quantityOfProduct = product[0].quantity;
+
+            const i = state.basketProducts.findIndex((element) => {
+                return element.id === action.payload.id;
+            })
+
+            const updatedProduct = {
+                ...state.basketProducts[i],
+                quantity: state.basketProducts[i].quantity + 1
+            }
+
+            const newProducts = [...state.basketProducts.slice(0,i), updatedProduct, ...state.basketProducts.slice(i+1)]
+
+            return {
+                ...state,
+                
+            //const quantityOfProduct = product[0].quantity;
+                basketProducts: newProducts
+            }
         default: return state
     }
 }
@@ -45,5 +64,14 @@ export const deleteFromBasket = object => {
     return {
         type: 'DELETE_FROM_BASKET',
         payload: object
+    }
+}
+export const addQuantity = ({id, quantity}) => {
+    return {
+        type: 'ADD_QUANTITY',
+        payload: {
+            id,
+            quantity: quantity
+        }
     }
 }
