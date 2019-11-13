@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,8 @@ function AllProducts() {
                   name,
                   price,
                   image_link,
-                  brand
+                  brand,
+                  quantity: 1
                 }
             return (      
                 <div className='card'>
