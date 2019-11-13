@@ -21,9 +21,9 @@ export const reducer = (state = initiatState, action) => {
                 ...state,
                 basketProducts: newBasketState
             }
-        case 'ADD_QUANTITY':
-            const product = state.basketProducts.filter( val => val.id === action.payload.id);
-            const quantityOfProduct = product[0].quantity;
+        case 'EDIT_QUANTITY':
+            // const product = state.basketProducts.filter( val => val.id === action.payload.id);
+            // const quantityOfProduct = product[0].quantity;
 
             const i = state.basketProducts.findIndex((element) => {
                 return element.id === action.payload.id;
@@ -66,9 +66,9 @@ export const deleteFromBasket = object => {
         payload: object
     }
 }
-export const addQuantity = ({id, quantity}) => {
+export const editQuantity = ({id, quantity}) => {
     return {
-        type: 'ADD_QUANTITY',
+        type: 'EDIT_QUANTITY',
         payload: {
             id,
             quantity: quantity

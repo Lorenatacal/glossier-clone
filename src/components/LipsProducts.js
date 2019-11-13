@@ -1,4 +1,3 @@
-  
 import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
@@ -10,28 +9,27 @@ function AllProducts() {
     const dispatch = useDispatch()
 
   
-    React.useEffect(() => {
-      axios
-      .get('http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline')
-      .then(response => {
-        console.log(response, 'resp')
-        setData(response.data)
-        dispatch(createUpdateData(response.data))
-      });
-    }, [])
+    // React.useEffect(() => {
+    //   axios
+    //   .get('http://makeup-api.herokuapp.com/api/v1/products.json?product_type=lipstick')
+    //   .then(response => {
+    //     console.log(response, 'respLips')
+    //     setData(response.data)
+    //     dispatch(createUpdateData(response.data))
+    //   });
+    // }, [])
   
     return (
       <div className="App">
         <h1 className="title">Shop All Products</h1>
-        <div className='cards'>
+        {/* <div className='cards'>
           {data && data.map(({ id, name, brand, price, image_link, description }) => {
             const obj = {
                   id,
                   name,
                   price,
                   image_link,
-                  brand,
-                  quantity: 1
+                  brand
                 }
             return (      
                 <div className='card'>
@@ -39,15 +37,15 @@ function AllProducts() {
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>
-                  <button className="button4" onClick={() => {
-                    dispatch({type: 'ADD_TO_BASKET', payload: obj})
+                  <button onClick={() => {
+                    dispatch({type: 'ADD_TO_BASKET' })
                   }}
                   >
                     Add To Basket</button>
                 </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
     );
   }
