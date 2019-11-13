@@ -12,22 +12,25 @@ function Basket() {
       <h1 className ="title">Basket:</h1>
       <div className="cards">
         {
-          basketState.map(({ id, name, price, image_link, brand}) => {
+          basketState.map(({ id, name, price, image_link, brand, quantity}) => {
             const obj = {
               id,
               name,
               price,
               image_link,
-              brand
+              brand,
+              quantity
             }
             return (
                 <div className='card'>
                   <p className="productName">{name}</p>
                   <img src={image_link} alt="Product"/>
                   <p>{brand}</p>
-                  <p>Quantity 1 </p>
-                  <p>Price: {price} £</p>
-                  <button>Edit</button>
+                  <p>Quantity: {quantity} </p>
+                  <p>Price: {quantity * price} £</p>
+                  <button onClick={() => {
+                    dispatch({ type: 'ADD_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
+                  }}>Edit</button>
                   <button onClick={() => {
                     dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
                   }}>Remove</button>
