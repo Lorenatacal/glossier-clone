@@ -57,13 +57,12 @@ export const reducer = (state = initiatState, action) => {
             const newQuantityObject = state.basketProducts.map(obj=> {
                 return obj.quantity
             })
-            console.log(newQuantityObject, 'new')
             const productQuantity = newQuantityObject.reduce((a,b) => a + b, 0)
-            console.log(productQuantity, 'quantity')
             return{
                 ...state,
                 totalQuantity: productQuantity
             }
+            
         default: return state
     }
 }
