@@ -46,6 +46,7 @@ function Basket() {
                   </div>
                   <button className="button4" onClick={() => {
                     dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
+                    dispatch({type: 'INCREASE_NAV_BAR'})
                   }}>Remove</button>
               </div>
             )
