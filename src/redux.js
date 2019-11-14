@@ -21,9 +21,7 @@ export const reducer = (state = initiatState, action) => {
                 ...state,
                 basketProducts: newBasketState
             }
-        case 'EDIT_QUANTITY':
-            // const product = state.basketProducts.filter( val => val.id === action.payload.id);
-            // const quantityOfProduct = product[0].quantity;
+        case 'INCREASE_QUANTITY':
 
             const i = state.basketProducts.findIndex((element) => {
                 return element.id === action.payload.id;
@@ -39,8 +37,20 @@ export const reducer = (state = initiatState, action) => {
             return {
                 ...state,
                 
-            //const quantityOfProduct = product[0].quantity;
                 basketProducts: newProducts
+            }
+        case 'DECREASE_QUANTITY':
+            const e = state.basketProducts.findIndex((element) => {
+                return element.id === action.payload.id;
+            })
+            const decreasedProduct = {
+                ...state.basketProducts[e],
+                quantity: state.basketProducts[e].quantity - 1
+            }
+            const decreasedProducts = [...state.basketProducts.slice(0,e), decreasedProduct, ...state.basketProducts.slice(e+1)]
+            return {
+                ...state,
+                basketProducts: decreasedProducts
             }
         default: return state
     }
@@ -66,12 +76,22 @@ export const deleteFromBasket = object => {
         payload: object
     }
 }
-export const editQuantity = ({id, quantity}) => {
+export const increaseQuantity = ({id, quantity}) => {
     return {
-        type: 'EDIT_QUANTITY',
+        type: 'INCREASE_QUANTITY',
         payload: {
             id,
-            quantity: quantity
+            quantity
+        }
+    }
+}
+
+export const decreaseQuantity = ({id, quantity}) => {
+    return {
+        type: 'DECREASE_QUANTITY',
+        payload: {
+            id,
+            quantity
         }
     }
 }

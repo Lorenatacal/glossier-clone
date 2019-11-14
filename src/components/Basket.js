@@ -28,9 +28,15 @@ function Basket() {
                   <p>{brand}</p>
                   <p>Quantity: {quantity} </p>
                   <p>Price: {quantity * price} £</p>
-                  <button className="button4" onClick={() => {
-                    dispatch({ type: 'EDIT_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
-                  }}>Edit</button>
+                  <div className="button4">
+                    <button className="button3" onClick={() => {
+                      dispatch({ type: 'INCREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
+                    }}>+</button>
+                    <p className="edit">{quantity}</p>
+                    <button className="button3" onClick={() => {
+                      dispatch({ type: 'DECREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
+                    }}>-</button>
+                  </div>
                   <button className="button4" onClick={() => {
                     dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
                   }}>Remove</button>
