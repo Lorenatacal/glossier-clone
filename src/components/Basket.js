@@ -30,7 +30,7 @@ function Basket() {
                   <p>Price: {quantity * price} £</p>
                   <div className="button4">
                     <button className="button3" onClick={() => {
-                      quantity = 0 
+                      quantity > 1 
                       ? dispatch({ type: 'DECREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
                       : dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
                     }}>-</button>
