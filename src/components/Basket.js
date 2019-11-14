@@ -37,6 +37,7 @@ function Basket() {
                     <p className="edit">{quantity}</p>
                     <button className="button3" onClick={() => {
                       dispatch({ type: 'INCREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
+                      dispatch({type: 'INCREASE_NAV_BAR'})
                     }}>+</button>
                   </div>
                   <button className="button4" onClick={() => {

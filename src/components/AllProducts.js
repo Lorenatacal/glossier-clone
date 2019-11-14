@@ -41,6 +41,7 @@ function AllProducts() {
                   <p>{price} £</p>
                   <button className="button4" onClick={() => {
                     dispatch({type: 'ADD_TO_BASKET', payload: obj})
+                    dispatch({type: 'INCREASE_NAV_BAR'})
                   }}
                   >
                     Add To Basket</button>

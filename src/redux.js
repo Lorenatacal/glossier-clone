@@ -1,6 +1,7 @@
 export const initiatState = {
     data: [],
-    basketProducts: []
+    basketProducts: [],
+    totalQuantity: 0,
 }
 
 export const reducer = (state = initiatState, action) => {
@@ -13,7 +14,7 @@ export const reducer = (state = initiatState, action) => {
             case 'ADD_TO_BASKET':
                 return {
                     ...state,
-                    basketProducts: [...state.basketProducts, action.payload || []]
+                    basketProducts: [...state.basketProducts, action.payload || []],
                 }
         case 'DELETE_FROM_BASKET':
             const newBasketState = state.basketProducts.filter( val => val.id !== action.payload);
@@ -51,6 +52,17 @@ export const reducer = (state = initiatState, action) => {
             return {
                 ...state,
                 basketProducts: decreasedProducts
+            }
+        case 'INCREASE_NAV_BAR':
+            const newQuantityObject = state.basketProducts.map(obj=> {
+                return obj.quantity
+            })
+            console.log(newQuantityObject, 'new')
+            const productQuantity = newQuantityObject.reduce((a,b) => a + b, 0)
+            console.log(productQuantity, 'quantity')
+            return{
+                ...state,
+                totalQuantity: productQuantity
             }
         default: return state
     }
@@ -93,5 +105,11 @@ export const decreaseQuantity = ({id, quantity}) => {
             id,
             quantity
         }
+    }
+}
+
+export const increaseNavBar = () => {
+    return {
+        type: 'INCREASE_NAV_BAR',
     }
 }
