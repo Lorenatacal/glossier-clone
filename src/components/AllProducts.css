@@ -7,12 +7,14 @@
     font-family: 'nyt-imperial';
   }
 .card {
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(253, 244, 253);
   align-items: center;
   text-align: center;
 }
 .title {
+  align-items: center;
   text-align: center;
+  margin-right: 25%;
   font-family: "Apercu Pro", Helvetica, "Helvetica Neue", Arial, sans-serif
 }
 .productName {
@@ -32,7 +34,7 @@
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight: bold;
-  background-color:rgb(202, 200, 202);
+  background-color:rgb(250, 211, 250);
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
   text-align:center;
   transition: all 0.2s;

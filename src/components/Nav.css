@@ -4,6 +4,7 @@
     padding: 1rem;
     text-align: right;
     margin: 0% 7% 0% 10%;
+    background-color: rgb(253, 244, 253);;
     }
   
     .elements {
@@ -19,5 +20,5 @@
       width: 20%;
       height: 20%;
       float: left;
-      margin-top: -3%
+      margin-top: -4%
     }
