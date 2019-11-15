@@ -2,6 +2,7 @@ export const initiatState = {
     data: [],
     basketProducts: [],
     totalQuantity: 0,
+    totalPrice: 0,
 }
 
 export const reducer = (state = initiatState, action) => {
@@ -62,7 +63,31 @@ export const reducer = (state = initiatState, action) => {
                 ...state,
                 totalQuantity: productQuantity
             }
+        case 'ADD_TOTAL_PRICE':
+            const quantities = state.basketProducts.map(obj => {
+                return obj.quantity
+            })
+            console.log(quantities, 'quantity')
+            const prices = state.basketProducts.map(obj => {
+                return obj.price
+            })
+            console.log(prices, 'price')
+            // const finalPrices = prices.map(price => price * quantities[prices.findIndex((price) => {
+            //     return price;
+            // })])
+            const finalPrices = []
             
+            for(let i=0; i<quantities.length; i++) {
+                finalPrices.push(quantities[i] * prices[i])
+            }
+            console.log(finalPrices, 'finalPrice')
+
+            const finalPrice = finalPrices.reduce((a,b) => a + b, 0)
+            console.log('finalPrice', finalPrice);
+            return {
+                ...state,
+                totalPrice: finalPrice
+            }
         default: return state
     }
 }
@@ -110,5 +135,11 @@ export const decreaseQuantity = ({id, quantity}) => {
 export const increaseNavBar = () => {
     return {
         type: 'INCREASE_NAV_BAR',
+    }
+}
+
+export const addTotalPrice = () => {
+    return {
+        type: 'ADD_TOTAL_PRICE',
     }
 }

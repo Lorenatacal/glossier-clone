@@ -4,7 +4,8 @@ import './AllProducts.css'
 import { createUpdateData } from '../redux';
 
 function Basket() {
-  const basketState = useSelector(state => state.basketProducts)
+  const basketState = useSelector(state => state.basketProducts);
+  const totalPriceState = useSelector(state => state.totalPrice)
   const dispatch = useDispatch()
 
   return (
@@ -33,26 +34,30 @@ function Basket() {
                       if(quantity > 1) {
                         dispatch({ type: 'DECREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
                         dispatch({ type: 'INCREASE_NAV_BAR', payload: {id: obj.id, quantity: obj.quantity} })
+                        dispatch({type: 'ADD_TOTAL_PRICE' })
                       } else {
                         dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
                         dispatch({ type: 'INCREASE_NAV_BAR', payload: {id: obj.id, quantity: obj.quantity} })
+                        dispatch({type: 'ADD_TOTAL_PRICE' })
                       }
                     }}>-</button>
                     <p className="edit">{quantity}</p>
                     <button className="button3" onClick={() => {
                       dispatch({ type: 'INCREASE_QUANTITY', payload: {id: obj.id, quantity: obj.quantity} })
                       dispatch({type: 'INCREASE_NAV_BAR'})
+                      dispatch({type: 'ADD_TOTAL_PRICE' })
                     }}>+</button>
                   </div>
                   <button className="button4" onClick={() => {
                     dispatch({type: 'DELETE_FROM_BASKET', payload: obj.id})
-                    dispatch({type: 'INCREASE_NAV_BAR'})
+                    dispatch({type: 'INCREASE_NAV_BAR', payload: {id: obj.id, quantity: obj.quantity}})
+                    dispatch({type: 'ADD_TOTAL_PRICE' })
                   }}>Remove</button>
               </div>
             )
           })
         }
-        <p>Basket Total: </p>
+        <p>Basket Total: {totalPriceState}</p>
       </div>
     </div>
   );
