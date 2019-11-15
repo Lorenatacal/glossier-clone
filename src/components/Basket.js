@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import './AllProducts.css'
-import { createUpdateData } from '../redux';
+import Checkout from './Checkout'
 
 function Basket() {
   const basketState = useSelector(state => state.basketProducts);
   const totalPriceState = useSelector(state => state.totalPrice)
   const dispatch = useDispatch()
+  const [component, setComponent] = React.useState(false)
 
   return (
     <div className="App">
@@ -57,10 +58,34 @@ function Basket() {
             )
           })
         }
-        <p>Basket Total: {totalPriceState}</p>
       </div>
+      <p className ="basket">Basket Total: {totalPriceState}</p>
+      <div className="buttonDiv">
+        <button className="checkoutButton" onClick={() => {
+          setComponent(true)
+        }}>Checkout</button>
+      </div>
+
+        <div>
+          {
+            (component)
+              ? 
+                <>
+                  <Checkout />
+                </>
+              : null
+          }
+        </div>
+
     </div>
+
+    
+
+
   );
+
+  
+  
 }
 
 export default Basket;
