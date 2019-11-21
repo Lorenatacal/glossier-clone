@@ -1,7 +1,7 @@
 .topnav {
     border: 2px solid #e7e7e7;
     border-radius: 4px; 
-    padding: 1rem;
+    padding: 2rem;
     text-align: right;
     margin: 0% 7% 0% 10%;
     background-color: rgb(253, 244, 253);;
@@ -17,8 +17,16 @@
     }
   
     .navbarLogo {
-      width: 20%;
-      height: 20%;
+      width: 16%;
+      height: 14%;
       float: left;
-      margin-top: -4%
+      margin-top: -8%
+    }
+    .lowernav {
+      border-radius: 2px; 
+      padding: 1rem;
+      text-align: right;
+      margin: 0% 7% 0% 10%;
+      text-align: center;
+      margin-right: 24%;
     }
