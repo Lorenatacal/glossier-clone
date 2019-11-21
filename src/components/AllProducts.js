@@ -1,4 +1,3 @@
-  
 import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +13,6 @@ function AllProducts() {
       axios
       .get('http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline')
       .then(response => {
-        console.log(response, 'resp')
         setData(response.data)
         dispatch(createUpdateData(response.data))
       });
@@ -36,7 +34,7 @@ function AllProducts() {
             return (      
                 <div className='card'>
                   <p className="productName">{name}</p>
-                  <img src={image_link} alt="Product"/>
+                  <img width="158px" height="184px" src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>{price} £</p>
                   <button className="button4" onClick={() => {
