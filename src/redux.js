@@ -67,23 +67,17 @@ export const reducer = (state = initiatState, action) => {
             const quantities = state.basketProducts.map(obj => {
                 return obj.quantity
             })
-            console.log(quantities, 'quantity')
             const prices = state.basketProducts.map(obj => {
                 return obj.price
             })
-            console.log(prices, 'price')
-            // const finalPrices = prices.map(price => price * quantities[prices.findIndex((price) => {
-            //     return price;
-            // })])
             const finalPrices = []
             
             for(let i=0; i<quantities.length; i++) {
                 finalPrices.push(quantities[i] * prices[i])
             }
-            console.log(finalPrices, 'finalPrice')
 
             const finalPrice = finalPrices.reduce((a,b) => a + b, 0)
-            console.log('finalPrice', finalPrice);
+
             return {
                 ...state,
                 totalPrice: finalPrice
