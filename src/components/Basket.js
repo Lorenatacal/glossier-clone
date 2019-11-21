@@ -26,7 +26,7 @@ function Basket() {
             return (
                 <div className='card'>
                   <p className="productName">{name}</p>
-                  <img src={image_link} alt="Product"/>
+                  <img width="158px" height="184px" src={image_link} alt="Product"/>
                   <p>{brand}</p>
                   <p>Quantity: {quantity} </p>
                   <p>Price: {quantity * price} £</p>
